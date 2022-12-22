@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -903,7 +904,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
   layout.addView(textView5);
   layout.addView(textView6);
     
-   THREAD.write(panel.getBytes());
+   THREAD.write(layout.getBytes());
    result.success(true);
   }
   private void printNewLine(Result result) {
