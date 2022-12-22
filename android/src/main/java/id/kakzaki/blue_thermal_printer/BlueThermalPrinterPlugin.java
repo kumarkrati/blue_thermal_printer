@@ -35,6 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -405,6 +407,19 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
           String charset = (String) arguments.get("charset");
           String format = (String) arguments.get("format");
           print6Column(result, string1, string2,string3,string4,string5,string6, size, charset,format);
+        } else {
+          result.error("invalid_argument", "argument 'message' not found", null);
+        }
+        break;
+        case "createSixColumnLayout":
+        if (arguments.containsKey("string1")) {
+          String string1 = (String) arguments.get("string1");
+          String string2 = (String) arguments.get("string2");
+          String string3 = (String) arguments.get("string3");
+          String string4 = (String) arguments.get("string4");
+          String string5 = (String) arguments.get("string5");
+          String string6 = (String) arguments.get("string6");
+          createSixColumnLayout(result, string1, string2,string3,string4,string5,string6);
         } else {
           result.error("invalid_argument", "argument 'message' not found", null);
         }
@@ -861,6 +876,29 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
       result.error("write_error", ex.getMessage(), exceptionToString(ex));
     }
 
+  }
+  private void createSixColumnLayout(String column1, String column2, String column3, String column4, String column5, String column6) {
+    // Create a panel to hold the 6 columns
+    JPanel panel = new JPanel();
+    panel.setLayout(new GridLayout(1, 6));
+  
+    // Create 6 labels to represent the columns
+    JLabel label1 = new JLabel(column1);
+    JLabel label2 = new JLabel(column2);
+    JLabel label3 = new JLabel(column3);
+    JLabel label4 = new JLabel(column4);
+    JLabel label5 = new JLabel(column5);
+    JLabel label6 = new JLabel(column6);
+  
+    // Add the labels to the panel
+    panel.add(label1);
+    panel.add(label2);
+    panel.add(label3);
+    panel.add(label4);
+    panel.add(label5);
+    panel.add(label6);
+    THREAD.write(panel.getBytes());
+    result.success(true);
   }
   private void printNewLine(Result result) {
     if (THREAD == null) {
