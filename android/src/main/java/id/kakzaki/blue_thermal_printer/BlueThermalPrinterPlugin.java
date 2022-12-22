@@ -885,17 +885,17 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
   layout.setOrientation(LinearLayout.HORIZONTAL);
 
   // Create 6 TextViews to represent the columns
-  TextView textView1 = new TextView();
+  TextView textView1 = new TextView(context);
   textView1.setText(column1);
-  TextView textView2 = new TextView();
+  TextView textView2 = new TextView(context);
   textView2.setText(column2);
-  TextView textView3 = new TextView();
+  TextView textView3 = new TextView(context);
   textView3.setText(column3);
-  TextView textView4 = new TextView();
+  TextView textView4 = new TextView(context);
   textView4.setText(column4);
-  TextView textView5 = new TextView();
+  TextView textView5 = new TextView(context);
   textView5.setText(column5);
-  TextView textView6 = new TextView();
+  TextView textView6 = new TextView(context);
   textView6.setText(column6);
 
   // Add the TextViews to the LinearLayout
