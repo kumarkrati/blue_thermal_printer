@@ -186,7 +186,7 @@ class BlueThermalPrinter {
   ///print6Column(String string1, String string2, String string3,String string4,String string5,String string6, int size,{String? charset, String? format})
   Future<dynamic> createSixColumnLayout(String string1, String string2,
           String string3, String string4, String string5, String string6) =>
-      _channel.invokeMethod('print6Column', {
+      _channel.invokeMethod('createSixColumnLayout', {
         'string1': string1,
         'string2': string2,
         'string3': string3,
