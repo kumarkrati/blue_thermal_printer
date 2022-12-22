@@ -35,8 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -877,7 +876,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
     }
 
   }
-  private void createSixColumnLayout(String column1, String column2, String column3, String column4, String column5, String column6) {
+  private void createSixColumnLayout(Result result,String column1, String column2, String column3, String column4, String column5, String column6) {
     // Create a panel to hold the 6 columns
     JPanel panel = new JPanel();
     panel.setLayout(new GridLayout(1, 6));
