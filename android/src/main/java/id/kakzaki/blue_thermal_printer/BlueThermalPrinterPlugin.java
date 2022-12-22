@@ -881,21 +881,21 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
   }
   private void createSixColumnLayout(Result result,String column1, String column2, String column3, String column4, String column5, String column6) {
     // Create a panel to hold the 6 columns
-   LinearLayout layout = new LinearLayout(getApplicationContext());
+   LinearLayout layout = new LinearLayout(context);
   layout.setOrientation(LinearLayout.HORIZONTAL);
 
   // Create 6 TextViews to represent the columns
-  TextView textView1 = new TextView(this);
+  TextView textView1 = new TextView();
   textView1.setText(column1);
-  TextView textView2 = new TextView(this);
+  TextView textView2 = new TextView();
   textView2.setText(column2);
-  TextView textView3 = new TextView(this);
+  TextView textView3 = new TextView();
   textView3.setText(column3);
-  TextView textView4 = new TextView(this);
+  TextView textView4 = new TextView();
   textView4.setText(column4);
-  TextView textView5 = new TextView(this);
+  TextView textView5 = new TextView();
   textView5.setText(column5);
-  TextView textView6 = new TextView(this);
+  TextView textView6 = new TextView();
   textView6.setText(column6);
 
   // Add the TextViews to the LinearLayout
