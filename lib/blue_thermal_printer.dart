@@ -166,6 +166,22 @@ class BlueThermalPrinter {
         'charset': charset,
         'format': format
       });
+
+  ///print6Column(String string1, String string2, String string3,String string4,String string5,String string6, int size,{String? charset, String? format})
+  Future<dynamic> print6Column(String string1, String string2, String string3,
+          String string4, String string5, String string6, int size,
+          {String? charset, String? format}) =>
+      _channel.invokeMethod('print6Column', {
+        'string1': string1,
+        'string2': string2,
+        'string3': string3,
+        'string4': string4,
+        'string5': string5,
+        'string6': string6,
+        'size': size,
+        'charset': charset,
+        'format': format
+      });
 }
 
 class BluetoothDevice {
