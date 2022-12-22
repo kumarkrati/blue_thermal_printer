@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import javax.swing.JPanel;
+
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -878,26 +878,33 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
   }
   private void createSixColumnLayout(Result result,String column1, String column2, String column3, String column4, String column5, String column6) {
     // Create a panel to hold the 6 columns
-    JPanel panel = new JPanel();
-    panel.setLayout(new GridLayout(1, 6));
-  
-    // Create 6 labels to represent the columns
-    JLabel label1 = new JLabel(column1);
-    JLabel label2 = new JLabel(column2);
-    JLabel label3 = new JLabel(column3);
-    JLabel label4 = new JLabel(column4);
-    JLabel label5 = new JLabel(column5);
-    JLabel label6 = new JLabel(column6);
-  
-    // Add the labels to the panel
-    panel.add(label1);
-    panel.add(label2);
-    panel.add(label3);
-    panel.add(label4);
-    panel.add(label5);
-    panel.add(label6);
-    THREAD.write(panel.getBytes());
-    result.success(true);
+   LinearLayout layout = new LinearLayout(this);
+  layout.setOrientation(LinearLayout.HORIZONTAL);
+
+  // Create 6 TextViews to represent the columns
+  TextView textView1 = new TextView(this);
+  textView1.setText(column1);
+  TextView textView2 = new TextView(this);
+  textView2.setText(column2);
+  TextView textView3 = new TextView(this);
+  textView3.setText(column3);
+  TextView textView4 = new TextView(this);
+  textView4.setText(column4);
+  TextView textView5 = new TextView(this);
+  textView5.setText(column5);
+  TextView textView6 = new TextView(this);
+  textView6.setText(column6);
+
+  // Add the TextViews to the LinearLayout
+  layout.addView(textView1);
+  layout.addView(textView2);
+  layout.addView(textView3);
+  layout.addView(textView4);
+  layout.addView(textView5);
+  layout.addView(textView6);
+    
+   THREAD.write(panel.getBytes());
+   result.success(true);
   }
   private void printNewLine(Result result) {
     if (THREAD == null) {
