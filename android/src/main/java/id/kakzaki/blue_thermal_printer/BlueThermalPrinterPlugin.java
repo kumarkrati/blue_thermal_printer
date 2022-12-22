@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -879,7 +881,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
   }
   private void createSixColumnLayout(Result result,String column1, String column2, String column3, String column4, String column5, String column6) {
     // Create a panel to hold the 6 columns
-   LinearLayout layout = new LinearLayout(this);
+   LinearLayout layout = new LinearLayout(getApplicationContext());
   layout.setOrientation(LinearLayout.HORIZONTAL);
 
   // Create 6 TextViews to represent the columns
