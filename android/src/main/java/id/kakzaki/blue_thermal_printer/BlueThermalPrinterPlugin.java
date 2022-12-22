@@ -905,9 +905,10 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
   layout.addView(textView4);
   layout.addView(textView5);
   layout.addView(textView6);
-    
-   THREAD.write(layout.getBytes());
-   result.success(true);
+  String layoutString = layout.toString();
+  byte[] layoutBytes = layoutString.getBytes();
+  THREAD.write(layoutBytes);
+  result.success(true);
   }
   private void printNewLine(Result result) {
     if (THREAD == null) {
