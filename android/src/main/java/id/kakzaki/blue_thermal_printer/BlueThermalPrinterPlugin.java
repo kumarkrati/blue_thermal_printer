@@ -399,6 +399,12 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
         break;
         case "print6Column":
         if (arguments.containsKey("string1")) {
+          int width1 = (int) arguments.get("width1");
+          int width2 = (int) arguments.get("width2");
+          int width3 = (int) arguments.get("width3");
+          int width4 = (int) arguments.get("width4");
+          int width5 = (int) arguments.get("width5");
+          int width6 = (int) arguments.get("width6");
           String string1 = (String) arguments.get("string1");
           String string2 = (String) arguments.get("string2");
           String string3 = (String) arguments.get("string3");
@@ -408,7 +414,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
           int size = (int) arguments.get("size");
           String charset = (String) arguments.get("charset");
           String format = (String) arguments.get("format");
-          print6Column(result, string1, string2,string3,string4,string5,string6, size, charset,format);
+          print6Column(result,width1,width2,width3,width4,width5,width6, string1, string2,string3,string4,string5,string6, size, charset,format);
         } else {
           result.error("invalid_argument", "argument 'message' not found", null);
         }
@@ -833,7 +839,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
     }
 
   }
-  private void print6Column(Result result, String msg1, String msg2,String msg3,String msg4,String msg5,String msg6, int size, String charset, String format) {
+ private void print6Column(Result result, String msg1, int width1, String msg2, int width2, String msg3, int width3, String msg4, int width4, String msg5, int width5, String msg6, int width6, int size, String charset, String format) {
     byte[] cc = new byte[] { 0x1B, 0x21, 0x03 }; // 0- normal size text
     // byte[] cc1 = new byte[]{0x1B,0x21,0x00}; // 0- normal size text
     byte[] bb = new byte[] { 0x1B, 0x21, 0x08 }; // 1- only bold text
@@ -863,7 +869,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
           break;
       }
       THREAD.write(PrinterCommands.ESC_ALIGN_CENTER);
-      String line = String.format("%-8s %7s %7s %7s %7s %7s %n", msg1, msg2,msg3,msg4,msg5,msg6);
+      String line = String.format("%-" + width1 + "s %" + width2 + "s %" + width3 + "s %" + width4 + "s %" + width5 + "s %" + width6 + "s%n", msg1, msg2,msg3,msg4,msg5,msg6);
       if(format != null) {
         line = String.format(format, msg1, msg2,msg3,msg4,msg5,msg6);
       }
@@ -877,8 +883,8 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
       Log.e(TAG, ex.getMessage(), ex);
       result.error("write_error", ex.getMessage(), exceptionToString(ex));
     }
-
   }
+
   private void createSixColumnLayout(Result result,String column1, String column2, String column3, String column4, String column5, String column6) {
     // Create a panel to hold the 6 columns
    LinearLayout layout = new LinearLayout(context);
