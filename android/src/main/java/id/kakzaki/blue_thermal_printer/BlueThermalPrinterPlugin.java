@@ -839,7 +839,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
     }
 
   }
- private void print6Column(Result result, String msg1, int width1, String msg2, int width2, String msg3, int width3, String msg4, int width4, String msg5, int width5, String msg6, int width6, int size, String charset, String format) {
+ private void print6Column(Result result,int width1,int width2,int width3,int width4,int width5,int width6, String msg1,  String msg2, String msg3, String msg4,String msg5, String msg6, int size, String charset, String format) {
     byte[] cc = new byte[] { 0x1B, 0x21, 0x03 }; // 0- normal size text
     // byte[] cc1 = new byte[]{0x1B,0x21,0x00}; // 0- normal size text
     byte[] bb = new byte[] { 0x1B, 0x21, 0x08 }; // 1- only bold text
