@@ -817,7 +817,7 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
           break;
       }
       THREAD.write(PrinterCommands.ESC_ALIGN_CENTER);
-      String line = String.format("%-8s %7s %7s %7s %n", msg1, msg2,msg3,msg4);
+      String line = String.format("%-2s %20s %7s %7s %n", msg1, msg2,msg3,msg4);
       if(format != null) {
         line = String.format(format, msg1, msg2,msg3,msg4);
       }
